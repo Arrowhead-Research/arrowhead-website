@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { Footer } from "@/components/Footer";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { Header } from "@/components/Header";
+import { getThemeFromCookie } from "@/lib/theme";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -9,19 +14,42 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Arrowhead Research",
+  title: {
+    default: "Arrowhead Research",
+    template: "%s | Arrowhead Research",
+  },
   description:
     "Empowering military servicemembers to transform technical curiosity into real-world capability.",
+  metadataBase: new URL("https://arrowheadresearch.org"),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = await getThemeFromCookie();
+
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+    <html lang="en" className={theme === "dark" ? "dark" : ""}>
+      <head>
+        <GoogleAnalytics />
+      </head>
+      <body
+        className={`${inter.variable} flex min-h-screen flex-col bg-white antialiased dark:bg-dark-gray`}
+      >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-jade-green focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
