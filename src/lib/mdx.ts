@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
 
-import matter from "gray-matter";
-
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
 export interface BlogPostMeta {
@@ -13,10 +11,6 @@ export interface BlogPostMeta {
   summary: string;
   tags?: string[];
   image?: string;
-}
-
-export interface BlogPost extends BlogPostMeta {
-  content: string;
 }
 
 /**
@@ -35,25 +29,23 @@ export function getAllPostSlugs(): string[] {
 
 /**
  * Get metadata for all blog posts, sorted by date (newest first).
+ * Uses dynamic import to read the exported `meta` object from each MDX file.
  */
-export function getAllPosts(): BlogPostMeta[] {
+export async function getAllPosts(): Promise<BlogPostMeta[]> {
   const slugs = getAllPostSlugs();
 
-  const posts = slugs.map((slug) => {
-    const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data } = matter(fileContent);
+  const posts = await Promise.all(
+    slugs.map(async (slug) => {
+      const { meta } = (await import(`../../content/blog/${slug}.mdx`)) as {
+        meta: Omit<BlogPostMeta, "slug">;
+      };
 
-    return {
-      slug,
-      title: data.title as string,
-      date: data.date as string,
-      author: data.author as string,
-      summary: data.summary as string,
-      tags: data.tags as string[] | undefined,
-      image: data.image as string | undefined,
-    };
-  });
+      return {
+        slug,
+        ...meta,
+      };
+    }),
+  );
 
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -61,26 +53,26 @@ export function getAllPosts(): BlogPostMeta[] {
 }
 
 /**
- * Get a single blog post by slug, including its MDX content.
+ * Import a blog post MDX module by slug.
+ * Returns the default component and metadata, or null if not found.
  */
-export function getPostBySlug(slug: string): BlogPost | null {
+export async function getPostBySlug(slug: string): Promise<{
+  meta: BlogPostMeta;
+  Content: React.ComponentType;
+} | null> {
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
     return null;
   }
 
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContent);
+  const mod = (await import(`../../content/blog/${slug}.mdx`)) as {
+    default: React.ComponentType;
+    meta: Omit<BlogPostMeta, "slug">;
+  };
 
   return {
-    slug,
-    title: data.title as string,
-    date: data.date as string,
-    author: data.author as string,
-    summary: data.summary as string,
-    tags: data.tags as string[] | undefined,
-    image: data.image as string | undefined,
-    content,
+    meta: { slug, ...mod.meta },
+    Content: mod.default,
   };
 }

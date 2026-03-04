@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-dark-gray: #2d2e2d;
+  --color-dark-gray-light: #3a3b3a;
   --color-jade-green: #2c8753;
   --font-sans: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }

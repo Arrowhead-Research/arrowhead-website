@@ -84,7 +84,7 @@ export function ContactForm() {
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-dark-gray-light dark:text-white"
         />
       </div>
 
@@ -104,7 +104,7 @@ export function ContactForm() {
           onChange={(e) =>
             setFormData({ ...formData, affiliation: e.target.value })
           }
-          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-dark-gray-light dark:text-white"
         >
           <option value="">Select affiliation</option>
           <option value="active">Active</option>
@@ -129,7 +129,7 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-dark-gray-light dark:text-white"
         />
       </div>
 
@@ -150,7 +150,7 @@ export function ContactForm() {
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           }
-          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-jade-green focus:ring-1 focus:ring-jade-green focus:outline-none dark:border-gray-600 dark:bg-dark-gray-light dark:text-white"
         />
       </div>
 

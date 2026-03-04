@@ -47,7 +47,7 @@ export default function Home() {
       />
 
       {/* From Field to Function */}
-      <section className="bg-gray-50 px-4 py-16 sm:py-20 dark:bg-gray-900">
+      <section className="bg-gray-50 px-4 py-16 sm:py-20 dark:bg-dark-gray">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
             From Field to Function
@@ -72,7 +72,7 @@ export default function Home() {
             {VERTICALS.map((v) => (
               <div
                 key={v.title}
-                className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-700 dark:bg-dark-gray-light"
               >
                 <div className="flex justify-center">
                   <Image

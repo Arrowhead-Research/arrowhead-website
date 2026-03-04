@@ -12,7 +12,7 @@ export function ProgramCard({
   image = "/images/placeholder.jpg",
 }: ProgramCardProps) {
   return (
-    <article className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
+    <article className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-dark-gray-light">
       <div className="relative aspect-video">
         <Image
           src={image}

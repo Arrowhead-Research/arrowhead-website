@@ -26,28 +26,28 @@ export default function MissionPage() {
             <p>
               The people closest to the problem rarely get the opportunity to
               solve it. Military servicemembers encounter technical challenges
-              daily, yet the systems designed to support them are built by people
-              far removed from the operational environment.
+              daily, yet the systems designed to support them are built by
+              people far removed from the operational environment.
             </p>
             <p>
               Traditional pathways into engineering and technology are slow,
               expensive, and disconnected from the realities of defense. The
-              result is a gap — between those who know what needs to be built and
-              those who know how to build it.
+              result is a gap — between those who know what needs to be built
+              and those who know how to build it.
             </p>
             <p>
               Emerging technologies advance faster than bureaucracies can
-              acquire. The nation needs people who can prototype, test, and field
-              solutions at the speed of relevance. Those people are already
-              serving — they just need the tools, training, and community to
-              unlock their potential.
+              acquire. The nation needs people who can prototype, test, and
+              field solutions at the speed of relevance. Those people are
+              already serving — they just need the tools, training, and
+              community to unlock their potential.
             </p>
           </div>
         </div>
       </section>
 
       {/* Our Approach */}
-      <section className="bg-gray-50 px-4 py-16 sm:py-20 dark:bg-gray-900">
+      <section className="bg-gray-50 px-4 py-16 sm:py-20 dark:bg-dark-gray">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
             Our Approach
@@ -61,8 +61,8 @@ export default function MissionPage() {
             <p>
               Our programs are designed around four core verticals: Engineering
               Sprints, Academia &amp; Industry engagement, Writing &amp;
-              Presenting, and Fielding &amp; Competition. Each vertical targets a
-              different phase of the innovation cycle, from concept through
+              Presenting, and Fielding &amp; Competition. Each vertical targets
+              a different phase of the innovation cycle, from concept through
               deployment.
             </p>
             <p>

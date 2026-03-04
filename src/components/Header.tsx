@@ -23,17 +23,14 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-dark-gray">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center">
           <Image
-            src="/images/logo-small.png"
-            alt="Arrowhead Research logo"
-            width={40}
-            height={40}
-            className="h-10 w-10"
+            src="/images/logo-large.jpg"
+            alt="Arrowhead Research — home"
+            width={192}
+            height={128}
+            className="h-10 w-auto"
           />
-          <span className="hidden text-lg font-bold text-gray-900 sm:inline dark:text-white">
-            Arrowhead Research
-          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -84,7 +81,7 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-jade-green dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-jade-green"
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-jade-green dark:text-gray-300 dark:hover:bg-dark-gray-light dark:hover:text-jade-green"
                 >
                   {link.label}
                 </Link>
