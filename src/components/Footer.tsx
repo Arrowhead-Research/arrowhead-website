@@ -5,6 +5,7 @@ import { DonateButton } from "@/components/DonateButton";
 const FOOTER_NAV = [
   { href: "/mission", label: "Mission" },
   { href: "/programming", label: "Programs" },
+  { href: "/people", label: "People" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
