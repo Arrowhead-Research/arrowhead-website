@@ -27,16 +27,22 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
-          <div className="rounded-lg bg-white p-1 dark:bg-white">
-            <Image
-              src="/images/header.png"
-              alt="Arrowhead Research — home"
-              width={180}
-              height={45}
-              className="h-9 w-auto"
-              priority
-            />
-          </div>
+          <Image
+            src="/images/header.png"
+            alt="Arrowhead Research — home"
+            width={180}
+            height={45}
+            className="h-9 w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/images/header-dark.png"
+            alt="Arrowhead Research — home"
+            width={180}
+            height={45}
+            className="hidden h-9 w-auto dark:block"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
