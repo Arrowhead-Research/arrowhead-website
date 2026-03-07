@@ -1,10 +1,5 @@
 # TODO
 
-## Fixes
-
-- [ ] Refactor the blog to use `@next/mdx` instead of `next-mdx-remote`
-- [ ] Fix dark mode color issues. The background of `From Field to Function`, the contact form, and blog post cards are displaying as a navy blue. Text in the blog posts displays as black when it should be white. Ensure dark mode color scheme follows a primary color of dark grey #2d2e2d and a secondary color of jade green #2c8753. All text should be white, including rendered markdown in the blog section.
-
 ## Project Setup
 
 - [x] Initialize Next.js project with TypeScript, Tailwind CSS, ESLint
