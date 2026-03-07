@@ -19,14 +19,22 @@ export const metadata: Metadata = {
     template: "%s | Arrowhead Research",
   },
   description:
-    "Empowering military servicemembers to transform technical curiosity into real-world capability.",
+    "Arrowhead Research empowers military servicemembers with hands-on engineering experience, mentorship, and real-world technical challenges. Build. Break. Hack. Repeat.",
   metadataBase: new URL("https://arrowheadresearch.org"),
   icons: {
     icon: [
-      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      {
+        url: "/images/favicon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/images/favicon/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
     ],
-    apple: "/apple-icon.png",
+    apple: "/images/favicon/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
 };

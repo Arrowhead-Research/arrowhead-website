@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_URL = "https://arrowheadresearch.org";
 const SITE_NAME = "Arrowhead Research";
 const DEFAULT_DESCRIPTION =
-  "Empowering military servicemembers to transform technical curiosity into real-world capability.";
+  "Arrowhead Research empowers military servicemembers with hands-on engineering experience, mentorship, and real-world technical challenges. Build. Break. Hack. Repeat.";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/logo-large.jpg`;
 
 interface PageMetadataOptions {

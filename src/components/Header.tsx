@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { DonateButton } from "@/components/DonateButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -11,42 +12,56 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/mission", label: "Mission" },
-  { href: "/programming", label: "Programming" },
+  { href: "/programming", label: "Programs" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-dark-gray">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm dark:border-gray-800 dark:bg-dark-gray/95">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
-          <Image
-            src="/images/logo-large.jpg"
-            alt="Arrowhead Research — home"
-            width={192}
-            height={128}
-            className="h-10 w-auto"
-          />
+          <div className="rounded-lg bg-white p-1 dark:bg-white">
+            <Image
+              src="/images/header.png"
+              alt="Arrowhead Research — home"
+              width={180}
+              height={45}
+              className="h-9 w-auto"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-jade-green dark:text-gray-300 dark:hover:text-jade-green"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+          {NAV_LINKS.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  isActive
+                    ? "text-jade-green"
+                    : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Right side: theme toggle + donate + mobile menu button */}
+        {/* Right: theme toggle + donate + mobile menu button */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <div className="hidden md:block">
@@ -56,7 +71,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-md p-2 text-gray-700 md:hidden dark:text-gray-300"
+            className="rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100 md:hidden dark:text-gray-300 dark:hover:bg-dark-gray-light"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -69,25 +84,35 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — fixed: now shows on mobile, hidden on desktop */}
       {mobileMenuOpen && (
         <nav
-          className="border-t border-gray-200 bg-white px-4 pb-4 pt-2 md:hidden dark:border-gray-700 dark:bg-dark-gray"
-          aria-label="Mobile"
+          className="border-t border-gray-200 bg-white px-4 pb-4 pt-2 md:hidden dark:border-gray-800 dark:bg-dark-gray"
+          aria-label="Mobile navigation"
         >
-          <ul className="flex flex-col gap-2">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-jade-green dark:text-gray-300 dark:hover:bg-dark-gray-light dark:hover:text-jade-green"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="mt-2">
+          <ul className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block rounded-md px-3 py-2.5 text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-jade-green/10 text-jade-green"
+                        : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-dark-gray-light"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="mt-3 border-t border-gray-200 pt-3 dark:border-gray-700">
               <DonateButton />
             </li>
           </ul>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { getAllPosts } from "@/lib/mdx";
@@ -16,16 +18,25 @@ export default async function BlogPage() {
   return (
     <>
       <Hero
-        title="Blog"
-        subtitle="News, updates, and insights from the field."
+        title="From the Field"
+        subtitle="Event recaps, technical write-ups, and lessons learned from the people doing the work."
+        compact
       />
 
-      <section className="px-4 py-16 sm:py-20 dark:bg-dark-gray">
+      <section className="px-4 py-16 sm:py-24 dark:bg-dark-gray">
         <div className="mx-auto max-w-7xl">
           {posts.length === 0 ? (
-            <p className="text-center text-gray-600 dark:text-gray-400">
-              No posts yet. Check back soon.
-            </p>
+            <div className="text-center">
+              <p className="text-gray-600 dark:text-gray-400">
+                No posts yet. Check back soon.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-4 inline-block text-sm font-semibold text-jade-green underline underline-offset-4 hover:text-jade-green-dark"
+              >
+                Get notified when we publish
+              </Link>
+            </div>
           ) : (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

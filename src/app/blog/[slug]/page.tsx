@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getAllPostSlugs, getPostBySlug } from "@/lib/mdx";
@@ -43,9 +44,44 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <article className="px-4 py-16 sm:py-20 dark:bg-dark-gray">
       <div className="mx-auto max-w-3xl">
+        {/* Back link */}
+        <Link
+          href="/blog"
+          className="mb-8 inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-jade-green dark:text-gray-400 dark:hover:text-jade-green"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            />
+          </svg>
+          All posts
+        </Link>
+
         {/* Post header */}
         <header className="mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+          {meta.tags && meta.tags.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-2">
+              {meta.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-jade-green/10 px-2.5 py-0.5 text-xs font-medium text-jade-green"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             {meta.title}
           </h1>
           <div className="mt-4 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
@@ -59,23 +95,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span aria-hidden="true">&middot;</span>
             <span>{meta.author}</span>
           </div>
-          {meta.tags && meta.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700 dark:bg-dark-gray-light dark:text-gray-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <hr className="accent-rule mt-6" />
         </header>
 
         {/* MDX content */}
-        <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-strong:text-gray-900 prose-a:text-jade-green prose-a:no-underline hover:prose-a:underline dark:prose-headings:text-white dark:prose-p:text-white dark:prose-li:text-white dark:prose-strong:text-white dark:prose-a:text-jade-green dark:hover:prose-a:text-jade-green dark:text-white">
+        <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-strong:text-gray-900 prose-a:text-jade-green prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-jade-green-dark dark:prose-headings:text-white dark:prose-p:text-gray-300 dark:prose-li:text-gray-300 dark:prose-strong:text-white dark:prose-a:text-jade-green dark:hover:prose-a:text-jade-green-light">
           <Content />
+        </div>
+
+        {/* Post footer */}
+        <div className="mt-12 border-t border-gray-200 pt-8 dark:border-gray-700">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <Link
+              href="/blog"
+              className="text-sm font-semibold text-jade-green underline underline-offset-4 transition-colors hover:text-jade-green-dark dark:hover:text-jade-green-light"
+            >
+              Read more posts
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm text-gray-500 transition-colors hover:text-jade-green dark:text-gray-400 dark:hover:text-jade-green"
+            >
+              Questions? Get in touch
+            </Link>
+          </div>
         </div>
       </div>
     </article>
