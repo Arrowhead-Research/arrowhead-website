@@ -45,6 +45,7 @@ export default function ProgrammingPage() {
         title="Our Programs"
         subtitle="Hands-on experiences that turn operators into engineers. No lectures. No theory. Real problems, real tools, real results."
         compact
+        videoSrc="/videos/banner_video_3.mp4"
       />
 
       {/* Programs Grid */}

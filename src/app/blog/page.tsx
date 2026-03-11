@@ -21,6 +21,7 @@ export default async function BlogPage() {
         title="From the Field"
         subtitle="Event recaps, technical write-ups, and lessons learned from the people doing the work."
         compact
+        videoSrc="/videos/banner_video_2.mp4"
       />
 
       <section className="px-4 py-16 sm:py-24 dark:bg-dark-gray">

@@ -16,6 +16,7 @@ export default function ContactPage() {
         title="Get in Touch"
         subtitle="Questions about our programs? Want to partner, mentor, or compete? We're listening."
         compact
+        videoSrc="/videos/banner_video_3.mp4"
       />
 
       <section className="px-4 py-16 sm:py-24 dark:bg-dark-gray">

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 interface HeroProps {
@@ -7,6 +6,7 @@ interface HeroProps {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   compact?: boolean;
+  videoSrc: string;
 }
 
 export function Hero({
@@ -15,6 +15,7 @@ export function Hero({
   primaryCta,
   secondaryCta,
   compact = false,
+  videoSrc,
 }: HeroProps) {
   return (
     <section
@@ -22,12 +23,13 @@ export function Hero({
         compact ? "py-16 sm:py-20" : "py-20 sm:py-28 lg:py-36"
       }`}
     >
-      <Image
-        src="/images/homepage-banner-image.jpg"
-        alt=""
-        fill
-        priority
-        className="object-cover"
+      <video
+        src={videoSrc}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Darker overlay for better text contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark-gray/80 via-dark-gray/70 to-dark-gray/80" />

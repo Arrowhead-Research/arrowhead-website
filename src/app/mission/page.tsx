@@ -40,6 +40,7 @@ export default function MissionPage() {
         title="Our Mission"
         subtitle="Bridge the gap between those who operate and those who innovate."
         compact
+        videoSrc="/videos/banner_video_2.mp4"
       />
 
       {/* The Problem */}

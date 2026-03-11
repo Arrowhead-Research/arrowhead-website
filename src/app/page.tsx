@@ -40,8 +40,8 @@ const VERTICALS = [
 
 const STATS = [
   { value: "4", label: "Core Programs" },
-  { value: "72hr", label: "Sprint Cycles" },
   { value: "100%", label: "Hands-On" },
+  { value: "Veteran Owned", label: "Veteran Supported" },
   { value: "501(c)(3)", label: "Nonprofit" },
 ];
 
@@ -61,6 +61,7 @@ export default function Home() {
         subtitle="We give military servicemembers the tools, training, and community to engineer solutions at the speed of relevance."
         primaryCta={{ label: "Get Involved", href: "/contact" }}
         secondaryCta={{ label: "See Our Programs", href: "/programming" }}
+        videoSrc="/videos/banner_video_1.mp4"
       />
 
       {/* Stats Bar */}
