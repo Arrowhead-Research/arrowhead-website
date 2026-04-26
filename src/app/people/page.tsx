@@ -20,13 +20,13 @@ const LEADERSHIP_MEMBERS = [
   },
   {
     name: "Amy Marden",
-    role: "Vice President",
+    role: "Vice President of the Board",
     bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     image: "/images/placeholder.jpg",
   },
   {
     name: "Travis Williams",
-    role: "Director of Jean Shorts",
+    role: "Director of Strategic Partnerships",
     bio: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
     image: "/images/placeholder.jpg",
   },
